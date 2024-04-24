@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://3qy5tx3ont2j"]
+
+[ext_resource type="Script" path="res://Version.gd" id="1_hcpgb"]
+[ext_resource type="Texture2D" uid="uid://cnr41g8s4vxk8" path="res://Assets/Sprites/Window.png" id="2_ha3ye"]
+[ext_resource type="PackedScene" uid="uid://cmphh342h4r0n" path="res://mouse_player.tscn" id="3_0i77i"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_hcpgb")
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(4, 4.0625)
+texture = ExtResource("2_ha3ye")
+
+[node name="BackMenu" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackMenu"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 568.0
+offset_right = 168.0
+offset_bottom = 645.0
+
+[node name="MarginContainer" type="MarginContainer" parent="BackMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackMenu" type="Button" parent="BackMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="BackMenu2" type="ColorRect" parent="."]
+offset_left = 728.0
+offset_top = -288.0
+offset_right = 728.0
+offset_bottom = -288.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackMenu2"]
+layout_mode = 0
+offset_left = -264.0
+offset_top = 568.0
+offset_right = -31.0
+offset_bottom = 645.0
+
+[node name="MarginContainer" type="MarginContainer" parent="BackMenu2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Version 2" type="Button" parent="BackMenu2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Version"
+
+[node name="MousePlayer" parent="." instance=ExtResource("3_0i77i")]
+
+[connection signal="pressed" from="BackMenu/VBoxContainer/MarginContainer/BackMenu" to="." method="_on_back_menu_pressed"]
+[connection signal="pressed" from="BackMenu2/VBoxContainer/MarginContainer/Version 2" to="." method="_on_version_2_pressed"]

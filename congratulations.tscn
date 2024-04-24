@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcm7qsosfr50t"]
+
+[ext_resource type="Texture2D" uid="uid://b6adyui34df8q" path="res://Assets/Sprites/congratulations.png" id="1_gmfpi"]
+[ext_resource type="Script" path="res://congratulations.gd" id="2_5ea3q"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(576, 344)
+scale = Vector2(2.125, 2.125)
+texture = ExtResource("1_gmfpi")
+script = ExtResource("2_5ea3q")
+
+[node name="Despawn" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]

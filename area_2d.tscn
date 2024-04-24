@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://yu0i6x2cy6ct"]
+
+[ext_resource type="Texture2D" uid="uid://dsm6jma0o6pey" path="res://Assets/Sprites/RecycleProjectile.png" id="1_ks4l1"]
+[ext_resource type="Script" path="res://RecycleProjectile.gd" id="1_vcyj4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63xuk"]
+
+[node name="RecycleProjectile" type="Area2D"]
+script = ExtResource("1_vcyj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ks4l1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_63xuk")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccg3d6wulqq4b"]
+
+[ext_resource type="AudioStream" uid="uid://cycu8p4vwnvb5" path="res://Assets/Music/Battle2.wav" id="1_pc2x2"]
+[ext_resource type="Script" path="res://BattleGlobalMusic.gd" id="2_qe5ed"]
+
+[node name="Battle" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_pc2x2")
+script = ExtResource("2_qe5ed")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

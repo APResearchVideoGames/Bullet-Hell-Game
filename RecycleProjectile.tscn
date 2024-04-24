@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfapondah5g5c"]
+
+[ext_resource type="Script" path="res://RecycleProjectile.gd" id="1_scy52"]
+[ext_resource type="Texture2D" uid="uid://dsm6jma0o6pey" path="res://Assets/Sprites/RecycleProjectile.png" id="2_ycsbo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjapt"]
+radius = 8.0
+height = 32.0
+
+[node name="RecycleProjectile" type="Area2D"]
+scale = Vector2(2.24523, 2.02314)
+script = ExtResource("1_scy52")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ycsbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bjapt")

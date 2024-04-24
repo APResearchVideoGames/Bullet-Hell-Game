@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://j8la78eris4w"]
+
+[ext_resource type="Script" path="res://playrtest.gd" id="1_08k1m"]
+[ext_resource type="Texture2D" uid="uid://v3i2pc0s2dwa" path="res://Assets/Sprites/KeyboardUP.png" id="2_ain3n"]
+[ext_resource type="Script" path="res://Area2D.gd" id="3_qonxq"]
+[ext_resource type="AudioStream" uid="uid://buw837qsfg8m3" path="res://Assets/Music/hurt.wav" id="4_kkm1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq4jt"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihdcq"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fuio"]
+size = Vector2(19.9998, 22.0002)
+
+[node name="Keyboard" type="CharacterBody2D"]
+position = Vector2(232, 144)
+script = ExtResource("1_08k1m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ain3n")
+
+[node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("3_qonxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_fq4jt")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="hitbox"]
+stream = ExtResource("4_kkm1u")
+
+[node name="Walls" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ihdcq")
+
+[node name="Walls3" type="StaticBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls3"]
+position = Vector2(1.52588e-05, 0)
+shape = SubResource("RectangleShape2D_2fuio")
+
+[connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
+[connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]

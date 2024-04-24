@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnuwv2668jn8j"]
+
+[ext_resource type="Script" path="res://Marker2D.gd" id="1_03ors"]
+[ext_resource type="Texture2D" uid="uid://4l8f8j43rjm4" path="res://Assets/Sprites/PHRevolver.png" id="2_hi1t2"]
+
+[node name="Revolver" type="CharacterBody2D"]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(144, 296)
+script = ExtResource("1_03ors")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(56, -8)
+scale = Vector2(7.5, 5.75)
+texture = ExtResource("2_hi1t2")

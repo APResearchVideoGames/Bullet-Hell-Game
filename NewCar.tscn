@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://2idclum8javf"]
+
+[ext_resource type="Script" path="res://NewCar.gd" id="1_owmxm"]
+[ext_resource type="Texture2D" uid="uid://bumhnipg6s6ut" path="res://Assets/Sprites/NewCar!.png" id="1_q360j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm55y"]
+size = Vector2(112, 72)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(296, 152)
+script = ExtResource("1_owmxm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -32)
+scale = Vector2(2.75, 3)
+texture = ExtResource("1_q360j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jm55y")
+
+[node name="Startup" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Startup" to="." method="_on_startup_timeout"]

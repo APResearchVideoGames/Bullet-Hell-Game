@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmphh342h4r0n"]
+
+[ext_resource type="Script" path="res://MousePlayer.gd" id="1_7p4a3"]
+[ext_resource type="PackedScene" uid="uid://c0jwc0x6axuaa" path="res://MouseBullet.tscn" id="2_f0637"]
+[ext_resource type="Texture2D" uid="uid://dswhalm4xedog" path="res://Assets/Sprites/PlayerMouse.png" id="2_or30n"]
+[ext_resource type="PackedScene" uid="uid://qgpg62kdl2kc" path="res://CorruptedSmite.tscn" id="3_uf2ym"]
+[ext_resource type="PackedScene" uid="uid://gi8uwxqf8d26" path="res://warning.tscn" id="4_lwdnd"]
+[ext_resource type="AudioStream" uid="uid://cq0vvrql4dseo" path="res://Assets/Music/Explosion2.wav" id="5_50l0n"]
+[ext_resource type="PackedScene" uid="uid://ck0gjkml1s28o" path="res://recycle.tscn" id="5_flrga"]
+[ext_resource type="PackedScene" uid="uid://dcm7qsosfr50t" path="res://congratulations.tscn" id="6_aonws"]
+[ext_resource type="PackedScene" uid="uid://2idclum8javf" path="res://NewCar.tscn" id="7_c77cx"]
+[ext_resource type="PackedScene" uid="uid://dnnrwnbroqs8g" path="res://discord.tscn" id="8_mr6vu"]
+
+[node name="MousePlayer" type="CharacterBody2D"]
+scale = Vector2(1.00809, 0.989244)
+script = ExtResource("1_7p4a3")
+MouseBullet = ExtResource("2_f0637")
+Smite = ExtResource("3_uf2ym")
+Warning = ExtResource("4_lwdnd")
+Recycle = ExtResource("5_flrga")
+Congrats = ExtResource("6_aonws")
+Newcar = ExtResource("7_c77cx")
+Discord = ExtResource("8_mr6vu")
+
+[node name="MousePlayer" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_or30n")
+
+[node name="MousePlayer2" type="Marker2D" parent="."]
+
+[node name="SMITE" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.994867, 1.00698)
+stream = ExtResource("5_50l0n")
+
+[node name="DiscordCooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SmiteCooldown" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="SmiteTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RecycleCool" type="Timer" parent="."]
+one_shot = true
+
+[node name="NewCarCool" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="shoot" from="." to="." method="_on_shoot"]
+[connection signal="timeout" from="DiscordCooldown" to="." method="_on_discord_cooldown_timeout"]
+[connection signal="timeout" from="SmiteCooldown" to="." method="_on_smite_cooldown_timeout"]
+[connection signal="timeout" from="SmiteTimer" to="." method="_on_smite_timer_timeout"]
+[connection signal="timeout" from="RecycleCool" to="." method="_on_recycle_timeout"]
+[connection signal="timeout" from="NewCarCool" to="." method="_on_new_car_timeout"]

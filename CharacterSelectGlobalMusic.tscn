@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciaw8ljcjulsl"]
+
+[ext_resource type="AudioStream" uid="uid://duuhclnvxng8v" path="res://Assets/Music/CharacterSelect2.wav" id="1_7jpwq"]
+[ext_resource type="Script" path="res://CharacterSelectGlobalMusic.gd" id="2_lsmwa"]
+
+[node name="CharacterSelect" type="AudioStreamPlayer2D"]
+scale = Vector2(0.968432, 2.49105)
+stream = ExtResource("1_7jpwq")
+volume_db = 5.0
+autoplay = true
+script = ExtResource("2_lsmwa")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

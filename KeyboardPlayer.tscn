@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://djm2bgv01q08v"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_toshw"]
+[ext_resource type="Texture2D" uid="uid://v3i2pc0s2dwa" path="res://Assets/Sprites/KeyboardUP.png" id="2_o7npq"]
+[ext_resource type="Script" path="res://MoveUpSprite.gd" id="3_cl3b5"]
+[ext_resource type="AudioStream" uid="uid://buw837qsfg8m3" path="res://Assets/Music/hurt.wav" id="4_ty1yu"]
+[ext_resource type="Script" path="res://Hurtbox.gd" id="5_45mjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rw7y"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0j0h"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(112, 64)
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_toshw")
+
+[node name="MoveUpSprite" type="Sprite2D" parent="."]
+scale = Vector2(2.75, 2.9375)
+texture = ExtResource("2_o7npq")
+offset = Vector2(0.17, 0)
+script = ExtResource("3_cl3b5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Walls" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_0rw7y")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ty1yu")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("5_45mjf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_i0j0h")
+
+[connection signal="timeout" from="Timer" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

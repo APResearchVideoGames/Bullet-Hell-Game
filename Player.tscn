@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c75fc8lrem36m"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_4n1d5"]
+[ext_resource type="Texture2D" uid="uid://v3i2pc0s2dwa" path="res://Assets/Sprites/KeyboardUP.png" id="2_clcl8"]
+[ext_resource type="Script" path="res://MoveUpSprite.gd" id="3_vs8k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rw7y"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(564, 304)
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_4n1d5")
+
+[node name="MoveUpSprite" type="Sprite2D" parent="."]
+position = Vector2(24, -1.00002)
+scale = Vector2(2.75, 2.9375)
+texture = ExtResource("2_clcl8")
+script = ExtResource("3_vs8k0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_0rw7y")
+
+[node name="Health" type="Label" parent="."]
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 55.0

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://3hpaxhcbepsa"]
+
+[ext_resource type="Script" path="res://Assets/Description.gd" id="1_et1vt"]
+
+[node name="Description" type="VBoxContainer"]
+offset_right = 217.0
+offset_bottom = 80.0
+scale = Vector2(5.30629, 7.22846)
+script = ExtResource("1_et1vt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Smite" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "GAME OVER "

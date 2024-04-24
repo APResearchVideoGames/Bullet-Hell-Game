@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnnrwnbroqs8g"]
+
+[ext_resource type="Script" path="res://discord.gd" id="1_sof0b"]
+[ext_resource type="Texture2D" uid="uid://4h3wqob4e0ug" path="res://Assets/Sprites/Discord.png" id="1_va3bc"]
+[ext_resource type="PackedScene" uid="uid://cwcfs6awlal38" path="res://ping.tscn" id="2_kih4h"]
+[ext_resource type="AudioStream" uid="uid://jm437yksnfvg" path="res://Assets/Music/PING.wav" id="4_exjof"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(8, 16)
+rotation = -6.28319
+scale = Vector2(2.76532, 2.77445)
+script = ExtResource("1_sof0b")
+Ping = ExtResource("2_kih4h")
+
+[node name="Discord" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+rotation = -1.5708
+scale = Vector2(0.56777, 0.570538)
+texture = ExtResource("1_va3bc")
+offset = Vector2(-2.335, 0)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+scale = Vector2(-194.346, -0.414002)
+
+[node name="Despawn" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="PING" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Pingsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_exjof")
+volume_db = 20.005
+
+[connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]
+[connection signal="timeout" from="PING" to="." method="_on_ping_timeout"]

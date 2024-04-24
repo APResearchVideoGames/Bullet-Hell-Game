@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3wmedrw6qg3b"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_1c5jk"]
+[ext_resource type="Texture2D" uid="uid://v3i2pc0s2dwa" path="res://Assets/Sprites/KeyboardUP.png" id="2_hgyam"]
+[ext_resource type="Script" path="res://MoveUpSprite.gd" id="3_o8e7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rw7y"]
+size = Vector2(56, 56)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(564, 304)
+script = ExtResource("1_1c5jk")
+
+[node name="MoveUpSprite" type="Sprite2D" parent="."]
+position = Vector2(40, -1.52588e-05)
+scale = Vector2(2.5, 2.75)
+texture = ExtResource("2_hgyam")
+script = ExtResource("3_o8e7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40, 4)
+shape = SubResource("RectangleShape2D_0rw7y")

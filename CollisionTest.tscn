@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgmd407067fxm"]
+
+[ext_resource type="Script" path="res://CollisionTest.gd" id="1_fmfyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tp82v"]
+size = Vector2(267.722, 93.7016)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(16, 8)
+script = ExtResource("1_fmfyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(61.5167, 17.6106)
+scale = Vector2(0.496659, 0.477888)
+shape = SubResource("RectangleShape2D_tp82v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

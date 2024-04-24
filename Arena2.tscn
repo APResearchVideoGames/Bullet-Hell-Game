@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://ra3vbb4lv3kc"]
+
+[ext_resource type="Script" path="res://Arena.gd" id="1_veany"]
+[ext_resource type="Texture2D" uid="uid://cnr41g8s4vxk8" path="res://Assets/Sprites/Window.png" id="2_pc317"]
+[ext_resource type="Texture2D" uid="uid://gkka28rblyvr" path="res://Assets/Sprites/WindowsBackground.png" id="2_s1bsy"]
+[ext_resource type="PackedScene" uid="uid://cmphh342h4r0n" path="res://mouse_player.tscn" id="4_cbjxq"]
+[ext_resource type="PackedScene" uid="uid://qgpg62kdl2kc" path="res://CorruptedSmite.tscn" id="6_33e1w"]
+[ext_resource type="PackedScene" uid="uid://gi8uwxqf8d26" path="res://warning.tscn" id="7_4uxph"]
+[ext_resource type="PackedScene" uid="uid://ck0gjkml1s28o" path="res://recycle.tscn" id="8_ajm7m"]
+[ext_resource type="PackedScene" uid="uid://c3pv6fr3j5eva" path="res://playrtest.tscn" id="10_m4xs5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rr7b2"]
+size = Vector2(400, 8.00001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2jsy"]
+size = Vector2(512.5, 8)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_veany")
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(4.57902, 5.05632)
+texture = ExtResource("2_s1bsy")
+
+[node name="Walls2" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Walls2"]
+offset_left = 320.0
+offset_top = 120.0
+offset_right = 832.0
+offset_bottom = 128.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2"]
+position = Vector2(576, 124)
+shape = SubResource("RectangleShape2D_rr7b2")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Walls"]
+offset_left = 320.0
+offset_top = 512.0
+offset_right = 832.0
+offset_bottom = 520.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(575.75, 516)
+shape = SubResource("RectangleShape2D_rr7b2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(568.25, 124)
+shape = SubResource("RectangleShape2D_n2jsy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(568.25, 124)
+shape = SubResource("RectangleShape2D_n2jsy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576, 516)
+shape = SubResource("RectangleShape2D_n2jsy")
+
+[node name="Walls3" type="StaticBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Walls3"]
+offset_left = 120.0
+offset_top = -320.0
+offset_right = 520.0
+offset_bottom = -312.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls3"]
+position = Vector2(320, -316)
+shape = SubResource("RectangleShape2D_rr7b2")
+
+[node name="Walls4" type="StaticBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Walls4"]
+offset_left = 120.0
+offset_top = -832.0
+offset_right = 520.0
+offset_bottom = -824.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls4"]
+position = Vector2(320, -828)
+shape = SubResource("RectangleShape2D_rr7b2")
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(2.0821, 3.38843)
+texture = ExtResource("2_pc317")
+
+[node name="Smite" parent="." instance=ExtResource("6_33e1w")]
+visible = false
+position = Vector2(-496, 0)
+
+[node name="MousePlayer" parent="." instance=ExtResource("4_cbjxq")]
+MouseBullet = null
+
+[node name="Warning" parent="." instance=ExtResource("7_4uxph")]
+visible = false
+
+[node name="Recycle" parent="." instance=ExtResource("8_ajm7m")]
+visible = false
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("10_m4xs5")]
+position = Vector2(576, 320)
+scale = Vector2(1.44788, 1.44792)
